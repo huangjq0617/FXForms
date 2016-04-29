@@ -973,7 +973,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
                 if (![self.options containsObject:value]) value = nil;
             }
         }
-        if (!value && self.defaultValue)
+        if ( (!value || ([self.type isEqualToString:FXFormFieldTypeBitfield] && ! [value integerValue])) && self.defaultValue)
         {
             self.value = value = self.defaultValue;
         }
